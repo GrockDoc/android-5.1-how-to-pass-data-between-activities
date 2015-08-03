@@ -1,9 +1,11 @@
 package com.grockdoc.datapassing;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -11,6 +13,14 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        // Get a reference to the intent and extract the message passed from MainActivity
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        // Get a reference to the TextView in the activity_second.xml layout.
+        TextView messageTextView = (TextView) findViewById(R.id.message);
+        messageTextView.setText(message);
     }
 
     @Override
